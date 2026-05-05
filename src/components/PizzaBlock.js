@@ -21,25 +21,22 @@ const PizzaBlock = ({ id,imageUrl,title, types, sizes, price, category, rating})
                         
                         types.map(type=>(
                             types.length>1 ?
-                                type == activeType ? 
-                                    <li key={type}  className="active">тонкое</li>
+                                // type == activeType ? 
+                                    <li onClick={() =>setActiveType(type)} key={type}  className={type == activeType ? 'active': ''}>
+                                      {type == 0 ? 'тонкое': 'традиционное'}
+                                    </li>
                                 :
-                                    <li key={type}>традиционное</li>
-                            :
-                                type == activeType ?
-                                    <li key={type}  className="active">тонкое</li>
-                                :
-                                    <li key={type}  className="active">традиционное</li>
+                                    // <li key={type}>традиционное</li>
+                            // :
+                                    <li key={type}  className="active">{type == 0 ? 'тонкое': 'традиционное'}</li>
+                  
                         ))
                     }
                   </ul>
                   <ul>
                     {
                         sizes.map((size, ind)=>(
-                            ind == activeSize ?
-                                <li key={size} className="active">{size} см.</li>
-                            :
-                                <li key={size}>{size} см.</li>
+                                <li onClick={()=>setActiveSize(ind)} key={size} className={ind == activeSize? "active": ''}>{size} см.</li>
                         ))
                     }
                   </ul>
